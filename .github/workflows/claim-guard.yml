@@ -1,0 +1,38 @@
+name: Claim-Guard Verification
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  guard:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify lattice (safe even if evidence/ is empty)
+        run: |
+          python3 scripts/valor_attest.py --verify evidence/ | tee attestation.json
+
+      - name: Record to Genesis (only if endpoint configured)
+        if: ${{ secrets.GENESIS_ENDPOINT != '' }}
+        env:
+          GENESIS_ENDPOINT: ${{ secrets.GENESIS_ENDPOINT }}
+        run: |
+          curl -fsSL -X POST "$GENESIS_ENDPOINT" \
+            -H 'content-type: application/json' \
+            --data-binary @attestation.json || echo "GENESIS post failed/omitted (non-fatal)"
+
+      - name: Upload Guard Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: claim-guard-attestation
+          path: attestation.json

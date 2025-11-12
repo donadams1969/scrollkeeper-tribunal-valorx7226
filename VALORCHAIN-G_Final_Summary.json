@@ -1,0 +1,13 @@
+{
+  "pdf": "VALORCHAIN-G_Sovereign_Engagement_Dossier.SIGNED.pdf",
+  "press_md": "VALORCHAIN-G_Sovereign_Engagement_Press.SIGNED.md",
+  "pptx": "VALORCHAIN-G_Sovereign_Engagement_Deck.SIGNED.pptx",
+  "root_signature": {
+    "signer": "DG77.77X-\u039e",
+    "ed25519_public_key": "0MtDDhXIoLwF/aSv80nMF7/poglVVj1DrBBiA9MW2i0=",
+    "ed25519_signature": "z0hHObORQD8MSOK0lC1Kk/V1FlW6JhUZ3lUMAtteqMbM9V71cAa1e2mOPhDZr4hKm2RCRMGlExhWW5R2atBJAQ==",
+    "dilithium_sim_hash": "8b25a6ddd0b409136ddec3fdcf35c0dc25b27c9d05ee3428042ee7d00e85e6aed365be884061c89bc9572cdecc1b4fa66e26f1d2bf1ab5455dd3d86d3dd9b1f3",
+    "timestamp": 1762981374
+  },
+  "manifest_digest": "801a9ddb57924ac9b47f36c4d3c2f380663157ec4137c81d6c352a395ae41da4e27e5a0b90cd7edf3349a3fc710ee42dd30f6433b0c99c892b82315f487fe2f7"
+}
